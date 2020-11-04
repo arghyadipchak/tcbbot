@@ -15,7 +15,7 @@ async def hello(ctx):
 
 @client.command(name="bye")
 async def bye(ctx):
-    await ctx.send(f"Bye Bye {ctx.author.mention()}!")
+    await ctx.send(f"Bye Bye {ctx.author.mention}!")
 
 @client.event
 async def on_message(message):
