@@ -1,5 +1,6 @@
 import discord, asyncio
 from discord.ext.commands import Bot
+from cogs.hibye import *
 
 def get_token():
     import pickle
@@ -7,22 +8,7 @@ def get_token():
         return pickle.load(fh)
     return None
 
-client = Bot('?')
+bot = Bot('?')
+bot.add_cog(HiBye(bot))
 
-@client.command(name="hello")
-async def hello(ctx):
-    await ctx.send("Hello I'm the TCB Bot! I can't do anything yet, but I will soon.")
-
-@client.command(name="bye")
-async def bye(ctx):
-    await ctx.send(f"Bye Bye {ctx.author.mention}!")
-
-@client.event
-async def on_message(message):
-    # try:
-    await client.process_commands(message)
-    # except:
-    #     pass
-
-TOKEN = get_token()
-client.run(TOKEN)
+bot.run(get_token())
