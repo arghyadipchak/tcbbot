@@ -36,8 +36,8 @@ class CrackWatch(commands.Cog):
         game = ' '.join(args)
         img = find_game(game)
         if img:
-            emb = discord.Embed()
-            emb.set_image(url=img)
-            await ctx.send(embed=emb)
+            emb = discord.Embed(title = game)
+            emb.set_thumbnail(url = img)
+            await ctx.send(embed = emb)
         else:
             await ctx.send(f"{game}: Not Found!")
