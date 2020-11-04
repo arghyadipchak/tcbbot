@@ -13,6 +13,10 @@ client = Bot('?')
 async def hello(ctx):
     await ctx.send("Hello I'm the TCB Bot! I can't do anything yet, but I will soon.")
 
+@client.command(name="bye")
+async def bye(ctx):
+    await ctx.send(f"Bye Bye {ctx.author.mention()}!")
+
 @client.event
 async def on_message(message):
     # try:
