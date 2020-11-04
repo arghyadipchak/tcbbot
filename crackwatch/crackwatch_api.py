@@ -1,17 +1,17 @@
 import requests
 
-##parameter = {'is_cracked':'true'}
+parameter = {'is_released':'true'}
 
-request = requests.get('https://api.crackwatch.com/api/games')
+request = requests.get('https://api.crackwatch.com/api/games', parameter)
 
 ##print(request.text)
 
 request_json=request.json()
 print(request_json)
-##for i in range(0,len(request_json)):
-##  print(request_json[i]['title'])
+for i in range(0,len(request_json)):
+  print(request_json[i]['title'])
 
-string='Devil May Cry 6'
+##string='Devil May Cry 6'
 
 string=input('Enter game name : ')
 
@@ -25,7 +25,4 @@ print(text)
 
 for i in range(0,len(request_json)):
   if(request_json[i]['slug']==text):
-    print(request_json[i]['title'])
-
-
-
+    print(request_json[i]['image'])
