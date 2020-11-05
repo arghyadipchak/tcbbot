@@ -46,7 +46,7 @@ for k in [0, 1]:
         games = next(fetcher)
         if not games: break
         count+= len(games)
-        print(("Cracked", "Uncracked")[k], count)
+        print(("Cracked:", "Uncracked:")[k], count)
         for game in games:
             game.update({'lastUpdated': time_stamp, "crackStatus": ("Cracked", "Uncracked")[k]})
             if not collection.update_one({'_id': game['_id']}, {'$set': game}).modified_count:
