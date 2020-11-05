@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from pymongo import MongoClient
 
-def find_game(*gwords):
+def find_game(gwords):
   # gtmp = list(gwords)
   # for i in range(len(gtmp)):
   #   gtmp[i] = ''.join(c for c in gtmp[i] if c.isalnum())
