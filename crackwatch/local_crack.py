@@ -39,7 +39,7 @@ client = MongoClient()
 # uncracked.delete_many({'lastUpdated': {'$ne': time_stamp}})
 
 collection = client.crackwatch.allgames
-while k in [0, 1]:
+for k in [0, 1]:
     fetcher = (fetch_cracked_gen, fetch_uncracked_gen)[k]()
     count = 0
     while True:
