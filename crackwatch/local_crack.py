@@ -7,9 +7,8 @@ time_stamp = str(datetime.now())
 print("TimeStamp:", time_stamp)
 
 client = MongoClient()
-crackwatch = client.crackwatch
 
-cracked = crackwatch.cracked
+cracked = client.crackwatch.cracked
 fetcher = fetch_cracked_gen()
 cracked_count = 0
 while True:
@@ -24,7 +23,7 @@ while True:
     sleep(1)
 cracked.delete_many({'lastUpdated': {'$ne': time_stamp}})
 
-uncracked = crackwatch.cracked
+uncracked = client.crackwatch.uncracked
 fetcher = fetch_uncracked_gen()
 uncracked_count = 0
 while True:
