@@ -7,7 +7,7 @@ def find_game(*gwords):
   # for i in range(len(gtmp)):
   #   gtmp[i] = ''.join(c for c in gtmp[i] if c.isalnum())
   # gslug = '-'.join(slt)
-  gname = ' '.join(gname)
+  gname = ' '.join(gwords)
 
   client = MongoClient()
   games = client.crackwatch.allgames
