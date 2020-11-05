@@ -27,4 +27,4 @@ class CrackWatch(commands.Cog):
             emb.set_image(url = game['image'])
             await ctx.send(embed = emb)
         else:
-            await ctx.send(f"{game}: Not Found!")
+            await ctx.send(f"{' '.join(args)}: Not Found!")
