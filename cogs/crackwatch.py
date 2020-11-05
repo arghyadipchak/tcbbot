@@ -1,31 +1,18 @@
 import discord
 from discord.ext import commands
+from pymongo import MongoClient
 
-def find_game(string):
-  import requests
+def find_game(*gwords):
+  # gtmp = list(gwords)
+  # for i in range(len(gtmp)):
+  #   gtmp[i] = ''.join(c for c in gtmp[i] if c.isalnum())
+  # gslug = '-'.join(slt)
+  gname = ' '.join(gname)
 
-  parameter = {'is_released':'true'}
+  client = MongoClient()
+  games = client.crackwatch.allgames
 
-  request = requests.get('https://api.crackwatch.com/api/games', parameter)
-
-  ##print(request.text)
-
-  request_json=request.json()
-  # print(request_json)
-  # for i in range(0,len(request_json)):
-  #   print(request_json[i]['title'])
-
-  ##string='Devil May Cry 6'
-
-  slt = string.lower().split()
-  for i in range(len(slt)):
-    slt[i] = ''.join(e for e in slt[i] if e.isalnum())
-  text = '-'.join(slt)
-  print(text)
-
-  for i in range(0,len(request_json)):
-    if(request_json[i]['slug']==text):
-      return request_json[i]['image']
+  return games.find_one({'title': gname})
 
 class CrackWatch(commands.Cog):
     def __init__(self, bot):
@@ -33,11 +20,11 @@ class CrackWatch(commands.Cog):
 
     @commands.command(name="crack")
     async def crack(self, ctx, *args):
-        game = ' '.join(args)
-        img = find_game(game)
-        if img:
-            emb = discord.Embed(title = game)
-            emb.set_image(url = img)
+        game = find_game(args)
+        if game:
+            emb = discord.Embed(title = game['title'])
+            emb.add_field(name = "Crack Status:", value = game['crackStatus'])
+            emb.set_image(url = game['image'])
             await ctx.send(embed = emb)
         else:
             await ctx.send(f"{game}: Not Found!")
