@@ -6,7 +6,7 @@ def fetch_gen(*args, **kwargs):
     if 'page' not in kwargs: kwargs['page'] = 0
     while True:
         request_json = fetch(*args, **kwargs)
-        if not request_json: break
+        #if not request_json: break
         yield request_json
         kwargs['page']+= 1
 
@@ -18,7 +18,7 @@ def fetch_cracked_gen(*args, **kwargs):
     if 'page' not in kwargs: kwargs['page'] = 0
     while True:
         request_json = fetch_cracked(**kwargs)
-        if not request_json: break
+        #if not request_json: break
         yield request_json
         kwargs['page']+= 1
 
@@ -26,6 +26,6 @@ def fetch_uncracked_gen(*args, **kwargs):
     if 'page' not in kwargs: kwargs['page'] = 0
     while True:
         request_json = fetch_uncracked(**kwargs)
-        if not request_json: break
+        #if not request_json: break
         yield request_json
         kwargs['page']+= 1
