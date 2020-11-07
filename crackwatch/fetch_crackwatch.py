@@ -11,8 +11,8 @@ def fetch_gen(*args, **kwargs):
         kwargs['page']+= 1
 
 
-fetch_cracked = lambda *args,**kwargs: fetch(*args, **kwargs, is_cracked = True)
-fetch_uncracked = lambda *args,**kwargs: fetch(*args, **kwargs, is_cracked = False)
+fetch_cracked = lambda *args,**kwargs: fetch(*args, **kwargs, is_cracked = 'true')
+fetch_uncracked = lambda *args,**kwargs: fetch(*args, **kwargs, is_cracked = 'false')
 
 def fetch_cracked_gen(*args, **kwargs):
     if 'page' not in kwargs: kwargs['page'] = 0
