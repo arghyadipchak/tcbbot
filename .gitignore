@@ -1,3 +1,4 @@
-/cogs/__pycache__
 /.vscode
+/cogs/__pycache__
 /crackwatch/__pycache__
+/.env
