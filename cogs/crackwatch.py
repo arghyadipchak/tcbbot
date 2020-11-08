@@ -16,7 +16,7 @@ class CrackWatch(commands.Cog):
         gtmp = list(gwords)
         for i in range(len(gtmp)):
             gtmp[i] = ''.join(c for c in gtmp[i] if c.isalnum())
-        gslug = '-'.join(gtmp)
+        gslug = '-'.join(gtmp).lower()
         #gname = ' '.join(gwords)
 
         games = self.db.allgames
