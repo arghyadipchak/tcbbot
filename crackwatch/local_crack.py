@@ -1,12 +1,19 @@
 from fetch_crackwatch import *
+import os
+from dotenv import load_dotenv
 from pymongo import MongoClient
 from time import sleep
 from datetime import datetime
 
+if os.path.exists('.env'):
+    load_dotenv()
+
 time_stamp = str(datetime.now())
 print("TimeStamp:", time_stamp)
 
-client = MongoClient()
+USER = os.getenv('USER')
+PASSWORD = os.getenv('PASSWORD')
+client = MongoClient(username = USER, password = PASSWORD, authSource = 'crackwatch')
 
 # cracked = client.crackwatch.cracked
 # fetcher = fetch_cracked_gen()
