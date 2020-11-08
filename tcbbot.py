@@ -13,5 +13,5 @@ cogs = [HiBye, CrackWatch, Aternos]
 for cog in cogs:
     bot.add_cog(cog(bot))
 
-TOKEN = os.getenv('TOKEN')
+TOKEN = os.getenv('BOT_TOKEN')
 bot.run(TOKEN)

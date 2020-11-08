@@ -5,47 +5,16 @@ from pymongo import MongoClient
 from time import sleep
 from datetime import datetime
 
-if os.path.exists('.env'):
-    load_dotenv()
+load_dotenv()
+USER = os.getenv('DB_USER')
+PASSWORD = os.getenv('DB_PASSWORD')
+DB = os.getenv('DB_NAME')
+db_client = MongoClient(username = USER, password = PASSWORD, authSource = DB)
 
 time_stamp = str(datetime.now())
 print("TimeStamp:", time_stamp)
 
-USER = os.getenv('USER')
-PASSWORD = os.getenv('PASSWORD')
-client = MongoClient(username = USER, password = PASSWORD, authSource = 'crackwatch')
-
-# cracked = client.crackwatch.cracked
-# fetcher = fetch_cracked_gen()
-# cracked_count = 0
-# while True:
-#     games = next(fetcher)
-#     if not games: break
-#     cracked_count+= len(games)
-#     print("Cracked:", cracked_count)
-#     for game in games:
-#         game['lastUpdated'] = time_stamp
-#         if not cracked.update_one({'_id': game['_id']}, {'$set': game}).modified_count:
-#             cracked.insert_one(game)
-#     sleep(1)
-# cracked.delete_many({'lastUpdated': {'$ne': time_stamp}})
-
-# uncracked = client.crackwatch.uncracked
-# fetcher = fetch_uncracked_gen()
-# uncracked_count = 0
-# while True:
-#     games = next(fetcher)
-#     if not games: break
-#     uncracked_count+= len(games)
-#     print("Uncracked:", uncracked_count)
-#     for game in games:
-#         game['lastUpdated'] = time_stamp
-#         if not uncracked.update_one({'_id': game['_id']}, {'$set': game}).modified_count:
-#             uncracked.insert_one(game)
-#     sleep(1)
-# uncracked.delete_many({'lastUpdated': {'$ne': time_stamp}})
-
-collection = client.crackwatch.allgames
+collection = db_client[DB].allgames
 for k in [0, 1]:
     fetcher = (fetch_cracked_gen, fetch_uncracked_gen)[k]()
     count = 0
