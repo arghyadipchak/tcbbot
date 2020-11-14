@@ -5,9 +5,8 @@ class Aternos(commands.Cog):
         self.bot = bot
 
     @commands.command(name="aternos")
-    async def hello(self, ctx, *args):
-        if args:
-            work = args[0]
+    async def aternos(self, ctx: commands.Context, work = None):
+        if work:
             if work=='start':
                 pass    #Launch Server
             elif work=='status':

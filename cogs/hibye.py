@@ -5,9 +5,9 @@ class HiBye(commands.Cog):
         self.bot = bot
 
     @commands.command(name="hello")
-    async def hello(self, ctx):
+    async def hello(self, ctx: commands.Context):
         await ctx.send(f"Hello {ctx.author.mention}! I'm the TCB Bot.")
 
     @commands.command(name="bye")
-    async def bye(self, ctx):
+    async def bye(self, ctx: commands.Context):
         await ctx.send(f"Bye Bye {ctx.author.mention}!")

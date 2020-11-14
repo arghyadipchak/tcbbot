@@ -27,7 +27,7 @@ class CrackWatch(commands.Cog):
             return discord.Embed()
 
     @commands.command(name="crack")
-    async def crack(self, ctx, *args):
+    async def crack(self, ctx: commands.Context, *args):
         print(ctx.message)
         gname = ' '.join(args)
         if args:
