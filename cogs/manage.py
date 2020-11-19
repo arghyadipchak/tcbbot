@@ -1,6 +1,6 @@
 from discord.ext import commands
 from os import path, system
-#from git import Repo
+from git import Repo
 
 class Manage(commands.Cog):
     def __init__(self, bot):
