@@ -7,7 +7,7 @@ if os.path.exists('.env'):
     load_dotenv()
 
 bot = Bot('?')
-cogs = [ Aternos, CrackWatch, HiBye, Sound]
+cogs = [Aternos, CrackWatch, HiBye, Manage, Reddit, Sound]
 for cog in cogs:
     bot.add_cog(cog(bot))
 
