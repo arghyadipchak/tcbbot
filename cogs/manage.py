@@ -1,5 +1,5 @@
 from discord.ext import commands
-from os import path
+from os import path, system
 #from git import Repo
 
 class Manage(commands.Cog):
@@ -8,5 +8,7 @@ class Manage(commands.Cog):
 
     @commands.command(name="update")
     async def update(self, ctx: commands.Context):
-        await ctx.send(path.dirname(__file__))
-    #repo = Repo(os.path.realpath(__file__))
+        repo = Repo(path.dirname(path.dirname(__file__)))
+        repo.remotes.origin.pull()
+        await ctx.send("Updating...")
+        system("pm2 restart tcbbot")
