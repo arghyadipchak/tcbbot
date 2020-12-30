@@ -31,7 +31,6 @@ class CrackWatch(commands.Cog):
 
     @commands.command(name="crack")
     async def crack(self, ctx: commands.Context, *args):
-        print(ctx.message)
         gname = ' '.join(args)
         if args:
             games = self.find_games(gname)
