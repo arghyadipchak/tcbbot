@@ -1,15 +1,18 @@
 import discord, asyncio
 from discord.ext import commands
-import os, re
+from os import getenv
 from pymongo import MongoClient
+import re
 
 class CrackWatch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        USER = os.getenv('DB_USER')
-        PASSWORD = os.getenv('DB_PASSWORD')
-        DB = os.getenv('DB_NAME')
-        self.db_client = MongoClient(username = USER, password = PASSWORD, authSource = DB)
+        HOST = getenv('DB_HOST')
+        USER = getenv('DB_USER')
+        PSWD = getenv('DB_PASSWORD')
+        AUTH = getenv('DB_AUTH')
+        DB = getenv('DB_WORK')
+        self.db_client = MongoClient(host = [HOST], username = USER, password = PSWD, authSource = AUTH)
         self.db = self.db_client[DB]
 
     def find_games(self, gname):

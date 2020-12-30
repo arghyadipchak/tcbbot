@@ -1,5 +1,7 @@
 /.vscode
-/cogs/__pycache__
-/crackwatch/__pycache__
-/.env
-/req_basic.txt
+/__pycache__
+/*/__pycache__
+/*/*/__pycache__
+/envs
+/local*
+/containers.sh
