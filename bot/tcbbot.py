@@ -1,4 +1,4 @@
-from .cogs import *
+from cogs import *
 from discord.ext.commands import Bot
 
 def run_bot(TOKEN):
