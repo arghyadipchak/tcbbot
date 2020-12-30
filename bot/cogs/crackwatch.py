@@ -8,11 +8,12 @@ class CrackWatch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         HOST = getenv('DB_HOST')
+        PORT = getenv('DB_PORT')
         USER = getenv('DB_USER')
         PSWD = getenv('DB_PASSWORD')
         AUTH = getenv('DB_AUTH')
         DB = getenv('DB_WORK')
-        self.db_client = MongoClient(host = [HOST], username = USER, password = PSWD, authSource = AUTH)
+        self.db_client = MongoClient(host = HOST, port = PORT, username = USER, password = PSWD, authSource = AUTH)
         self.db = self.db_client[DB]
 
     def find_games(self, gname):

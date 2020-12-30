@@ -34,8 +34,8 @@ def fetch_uncracked_gen(*args, **kwargs):
         yield request_json
         kwargs['page']+= 1
 
-def run_bot(HOST, USER, PSWD, AUTH, DB):
-    db_client = MongoClient(host = [HOST], username = USER, password = PSWD, authSource = AUTH)
+def run_bot(HOST, PORT, USER, PSWD, AUTH, DB):
+    db_client = MongoClient(host = HOST, port = PORT, username = USER, password = PSWD, authSource = AUTH)
 
     time_stamp = str(datetime.now())
     print("TimeStamp:", time_stamp)
@@ -59,11 +59,12 @@ def run_bot(HOST, USER, PSWD, AUTH, DB):
 if __name__ == '__main__':
     from os import getenv
     HOST = getenv('DB_HOST')
+    PORT = getenv('DB_PORT')
     USER = getenv('DB_USER')
     PSWD = getenv('DB_PASSWORD')
     AUTH = getenv('DB_AUTH')
     DB = getenv('DB_WORK')
-    run_bot(HOST, USER, PSWD, AUTH, DB)
+    run_bot(HOST, PORT, USER, PSWD, AUTH, DB)
 
     STIME = getenv('SLEEP_TIME')
     sleep(STIME)
